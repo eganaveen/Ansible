@@ -34,7 +34,7 @@ echo "*************************************"
 
       echo "private ip after creating intsnace ${PRIVATE_IP}"
       echo "******************************************************"
-
+      PRIVATE_IP=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=${COMPONENT}" --query 'Reservations[*].Instances[*].PrivateIpAddress' --output text)
       # Creating DNS records
       ZONE_ID=$(aws route53 list-hosted-zones --query "HostedZones[*].{name:Name,ID:Id}" \
                                               --output text | grep roboshop.internal \
