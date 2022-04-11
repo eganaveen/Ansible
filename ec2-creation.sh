@@ -10,7 +10,8 @@ INSTANE_CREATE(){
 
 
   PRIVATE_IP=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=${COMPONENT}" --query 'Reservations[*].Instances[*].PrivateIpAddress' --output text)
-
+echo "private ip ${PRIVATE_IP}"
+echo "*************************************"
   #PRIVATE_IP=$(aws ec2 run-instances --image-id="${AMI_ID}" \
   #                      --instance-type=t2.micro \
   #                      --tag-specification "ResourceType=instance,Tags=[{Key=Name,Value=${COMPONENT}}]" \
