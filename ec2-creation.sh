@@ -28,7 +28,7 @@ if [ -z "${PRIVATE_IP}" ]; then
                           | jq '.Instances[].PrivateIpAddress' | sed -e 's/"//g'
     echo -e "\e[1m Instance Created\e[0m"
     else
-        echo "Instance ${INSTANCE_NAME} is already exists, Hence not creating"
+        echo "\e[1mInstance ${COMPONENT} is already exists, Hence not creating\e[0m"
 fi                      
 
 ## Creating DNS records
