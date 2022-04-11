@@ -1,6 +1,6 @@
 #!/bin/bash
 if [ -z "$1" ]; then
-    echo "Machine name is needed."
+    echo -e "\e[31mMachine name is needed.\e[0m"
     exit 1
 fi
 COMPONENT=$1
