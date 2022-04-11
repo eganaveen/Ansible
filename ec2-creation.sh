@@ -9,5 +9,5 @@ AMI_ID=$(aws ec2 describe-images --filters "Name=name,Values=Centos-7-DevOps-Pra
 aws ec2 run-instances --image-id="${AMI_ID}" \
                       --instance-type=t2.micro \
                       --tag-specification "ResourceType=instance,Tags=[{Key=Name,Value=${COMPONENT}}]" \
-                      --instance-market-options MarketType=spot,SpotOptions={SpotInstanceType=persistent,InstanceInterruptionBehavior=stop}| jq
+                      --instance-market-options "MarketType=spot,SpotOptions={SpotInstanceType=persistent,InstanceInterruptionBehavior=stop}" | jq
 
