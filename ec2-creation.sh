@@ -47,7 +47,7 @@ if [ "$1" == "all" ]; then
     for component in cart catalogue dispatch frontend mongodb mysql payment rabbitmq redis shipping user ; do
       INSTANE_CREATE ${component}
     done
-elif
+else
   INSTANE_CREATE $1
 fi
 
