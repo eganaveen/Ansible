@@ -28,8 +28,8 @@ INSTANE_CREATE(){
                             --tag-specification "ResourceType=instance,Tags=[{Key=Name,Value=${COMPONENT}}]" \
                             --instance-market-options "MarketType=spot,SpotOptions={SpotInstanceType=persistent,InstanceInterruptionBehavior=stop}" \
                             --security-group-ids ${SGID} \
-                            | jq)
-      echo -e "\e[1m Instance Created\e[0m"
+                            | jq '.Instances[].PrivateIpAddress' | sed -e 's/"//g')
+      echo -e "\e[1m ${COMPONENT} Instance Created\e[0m"
 
 
 #      PRIVATE_IP=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=${COMPONENT}" --query 'Reservations[*].Instances[*].PrivateIpAddress' --output text)
