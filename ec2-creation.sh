@@ -26,7 +26,7 @@ if [ -z "${PRIVATE_IP}" ]; then
                           --tag-specification "ResourceType=instance,Tags=[{Key=Name,Value=${COMPONENT}}]" \
                           --instance-market-options "MarketType=spot,SpotOptions={SpotInstanceType=persistent,InstanceInterruptionBehavior=stop}" \
                           --security-group-ids ${SGID} \
-                          | jq '.Instances[].PrivateIpAddress' | sed -e 's/"//g'
+                          | jq
     echo -e "\e[1m Instance Created\e[0m"
     else
         echo -e "\e[1mInstance ${COMPONENT} is already exists, Hence not creating\e[0m"
