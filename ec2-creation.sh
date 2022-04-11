@@ -11,7 +11,7 @@ SGID=$(aws ec2 describe-security-groups --filters Name=group-name,Values=sg_all 
 ZONE_ID=$(aws route53 list-hosted-zones --query "HostedZones[*].{name:Name,ID:Id}" \
                                         --output text | grep roboshop.internal \
                                         | awk '{print $1}' | awk -F / '{print $3}')
-sed -e "s/IPADDRESS/${PRIVATE_IP}/" -e "/s/COMPONENT/${COMPONENT}/" roboshop.json >/tmp/record.json
+sed -e "s/IPADDRESS/${PRIVATE_IP}/" -e "s/COMPONENT/${COMPONENT}/" roboshop.json >/tmp/record.json
 aws route53 change-resource-record-sets --hosted-zone-id "${ZONE_ID}" --change-batch file:///tmp/record.json | jq
 
 PRIVATE_IP=$(aws ec2 run-instances --image-id="${AMI_ID}" \
