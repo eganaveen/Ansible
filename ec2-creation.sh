@@ -10,8 +10,7 @@ INSTANE_CREATE(){
 
 
   PRIVATE_IP=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=${COMPONENT}" --query 'Reservations[*].Instances[*].PrivateIpAddress' --output text)
-echo "private ip ${PRIVATE_IP}"
-echo "*************************************"
+
   #PRIVATE_IP=$(aws ec2 run-instances --image-id="${AMI_ID}" \
   #                      --instance-type=t2.micro \
   #                      --tag-specification "ResourceType=instance,Tags=[{Key=Name,Value=${COMPONENT}}]" \
@@ -24,18 +23,17 @@ echo "*************************************"
       if [ -z "${SGID}" ]; then
           echo -e "\e[31m Security Group doesn't exist\e[0m"
       fi
-      aws ec2 run-instances --image-id="${AMI_ID}" \
+      PRIVATE_IP=$(aws ec2 run-instances --image-id="${AMI_ID}" \
                             --instance-type=t2.micro \
                             --tag-specification "ResourceType=instance,Tags=[{Key=Name,Value=${COMPONENT}}]" \
                             --instance-market-options "MarketType=spot,SpotOptions={SpotInstanceType=persistent,InstanceInterruptionBehavior=stop}" \
                             --security-group-ids ${SGID} \
-                            | jq
+                            | jq)
       echo -e "\e[1m Instance Created\e[0m"
 
 
-      PRIVATE_IP=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=${COMPONENT}" --query 'Reservations[*].Instances[*].PrivateIpAddress' --output text)
-      echo "private ip after creating intsnace ${PRIVATE_IP}"
-      echo "******************************************************"
+#      PRIVATE_IP=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=${COMPONENT}" --query 'Reservations[*].Instances[*].PrivateIpAddress' --output text)
+
       # Creating DNS records
       ZONE_ID=$(aws route53 list-hosted-zones --query "HostedZones[*].{name:Name,ID:Id}" \
                                               --output text | grep roboshop.internal \
@@ -47,8 +45,6 @@ echo "*************************************"
   fi
 }
 
-
-
 if [ "$1" == "all" ]; then
     for component in cart catalogue dispatch frontend mongodb mysql payment rabbitmq redis shipping user ; do
       INSTANE_CREATE ${component}
@@ -56,6 +52,3 @@ if [ "$1" == "all" ]; then
 else
   INSTANE_CREATE $1
 fi
-
-
-
