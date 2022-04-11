@@ -31,6 +31,10 @@ echo "*************************************"
                             --security-group-ids ${SGID} \
                             | jq
       echo -e "\e[1m Instance Created\e[0m"
+
+      echo "private ip after creating intsnace ${PRIVATE_IP}"
+      echo "******************************************************"
+
       # Creating DNS records
       ZONE_ID=$(aws route53 list-hosted-zones --query "HostedZones[*].{name:Name,ID:Id}" \
                                               --output text | grep roboshop.internal \
