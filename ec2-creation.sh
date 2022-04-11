@@ -49,7 +49,7 @@ if [ "$1" == "all" ]; then
     done
 elif
   INSTANE_CREATE $1
-if
+fi
 
 
 
