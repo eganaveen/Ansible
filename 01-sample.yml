@@ -9,6 +9,9 @@
         uptime
       register:
         OUT
+    - name: set_fact variable
+      set_fact:
+        - OUTPUT: OUT.stdout
     - name: using register vsriable
       debug:
-        msg: "{{OUT}}"
+        msg: "{{OUTPUT}}"
