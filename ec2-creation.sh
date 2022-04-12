@@ -30,7 +30,7 @@ INSTANE_CREATE(){
                                               | awk '{print $1}' | awk -F / '{print $3}')
       sed -e "s/IPADDRESS/${PRIVATE_IP}/" -e "s/COMPONENT/${COMPONENT}/" roboshop.json >/tmp/record.json
       aws route53 change-resource-record-sets --hosted-zone-id "${ZONE_ID}" --change-batch file:///tmp/record.json | jq &>/dev/null
-      else
+  else
           echo -e "\e[1mInstance ${COMPONENT} is already exists, Hence not creating\e[0m"
   fi
 }

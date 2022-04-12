@@ -7,5 +7,6 @@
                                     "Type": "A",
                                     "TTL": 300,
                                  "ResourceRecords": [{ "Value": "IPADDRESS"}]
-}}]
+                        }
+            }]
 }
