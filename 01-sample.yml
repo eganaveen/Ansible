@@ -12,6 +12,6 @@
     - name: set_fact variable
       set_fact:
         - OUTPUT: OUT.stdout
-    - name: using register vsriable
+    - name: output from set_fact
       debug:
         msg: "{{OUTPUT}}"
