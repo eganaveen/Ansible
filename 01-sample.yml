@@ -7,11 +7,10 @@
     - name: register a variable
       shell:
         uptime
-      register:
-        OUT
+      register: OUT
     - name: set_fact variable
       set_fact:
-        - OUTPUT: OUT.stdout
+        - OUTPUT: "{{OUT.stdout}}"
     - name: output from set_fact
       debug:
         msg: "{{OUTPUT}}"
