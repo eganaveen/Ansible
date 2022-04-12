@@ -1,0 +1,4 @@
+- name: role playbook
+  host: all
+  roles:
+    - demo
