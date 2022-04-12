@@ -9,7 +9,7 @@
         uptime
       register: OUT
     - name: set_fact variable
-      set_fact:
+      ansible.builtin.set_fact:
         OUTPUT: "{{OUT.stdout}}"
     - name: output from set_fact
       debug:
