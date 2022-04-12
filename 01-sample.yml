@@ -1,5 +1,14 @@
 - name: Sample play
   hosts: all
   tasks:
-    - debug:
+    - name: Hello world task
+      debug:
         msg: Hello world
+    - name: register a variable
+      shell:
+        uptime
+      register:
+        OUT
+    - name: using register vsriable
+      debug:
+        msg: { { OUT } }
