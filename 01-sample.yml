@@ -11,4 +11,4 @@
         OUT
     - name: using register vsriable
       debug:
-        msg: {{OUT}}
+        msg: "{{OUT}}"
