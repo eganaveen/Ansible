@@ -12,3 +12,8 @@
     src: https://github.com/roboshop-devops-project/frontend/archive/main.zip
     dest: /tmp
     remote_src: yes
+
+- name: cleanup old nginx content
+  file:
+    src: /usr/share/nginx/html
+    state: absent
