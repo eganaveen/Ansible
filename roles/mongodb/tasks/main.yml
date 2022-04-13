@@ -9,7 +9,7 @@
     state: installed
 
 - name: update listen address
-  replace:
+  ansible.builtin.replace:
     path: /etc/mongod.conf
     regexp: '127.0.0.1'
     replcae: '0.0.0.0'
