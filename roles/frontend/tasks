@@ -1,0 +1,3 @@
+- name: frontend task
+  debug:
+    msg: frondend application.
