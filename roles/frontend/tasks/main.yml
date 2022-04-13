@@ -20,6 +20,6 @@
 
 - name: copy the frontend content to nginx path
   copy:
-    src: /tmp/frontend-main/
+    src: /tmp/frontend-main/static/
     dest: /usr/share/nginx/html
     remote_src: yes
