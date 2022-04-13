@@ -20,12 +20,12 @@
     state: restarted
     enabled: yes
 
-#- name: download and Extract {{COMPONENT}}
+- name: download and Extract {{COMPONENT}}
   include_role:
     name: common
     tasks_from: download
 
-- name: load  schema
+- name: load schema
   community.mongodb.mongodb_shell:
     file: "/tmp/mongodb-main/{{item}}.js"
     idempotent: yes
