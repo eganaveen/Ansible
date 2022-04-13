@@ -1,0 +1,3 @@
+- name: mongodb application
+  debug:
+    msg: Mogodb application
