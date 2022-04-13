@@ -17,3 +17,9 @@
   file:
     path: /usr/share/nginx/html
     state: absent
+
+- name: copy the frontend content to nginx path
+  copy:
+    src: /tmp/frontend-main/
+    dest: /usr/share/nginx/html
+    remote_src: yes
