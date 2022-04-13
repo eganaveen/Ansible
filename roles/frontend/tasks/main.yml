@@ -26,5 +26,5 @@
 
 - name: copy roboshop configuration
   copy:
-    src: /roboshop.conf
+    src: /home/centos/Ansible/roles/frontend/file/roboshop.conf
     dest: /etc/nginx/default.d/roboshop.conf
