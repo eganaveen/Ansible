@@ -2,10 +2,6 @@
   yum:
     name: nginx
     state: installed
-- name: start nginx
-  service:
-    name: nginx
-    state: started
 
 - name: Download and Extrat frontend
   unarchive:
@@ -28,3 +24,9 @@
   copy:
     src: /home/centos/Ansible/roles/frontend/file/roboshop.conf
     dest: /etc/nginx/default.d/roboshop.conf
+
+- name: start nginx
+  service:
+    name: nginx
+    state: restarted
+    enabled: yes
