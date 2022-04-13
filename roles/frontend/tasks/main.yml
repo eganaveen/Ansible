@@ -14,6 +14,6 @@
     remote_src: yes
 
 - name: cleanup old nginx content
-  yum:
-    src: /usr/share/nginx/html
+  file:
+    path: /usr/share/nginx/html
     state: absent
