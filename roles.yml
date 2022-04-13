@@ -1,5 +1,5 @@
 - name: role playbook
-  hosts: all
+  hosts: FRONTEND
   become: yes
   roles:
     - demo
