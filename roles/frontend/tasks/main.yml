@@ -1,3 +1,4 @@
-- name: frontend task
-  debug:
-    msg: frondend application.
+- name: install Nginx
+  yum:
+    name: Nginx
+    state: installed
