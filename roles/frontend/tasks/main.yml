@@ -3,11 +3,10 @@
     name: nginx
     state: installed
 
-- name: Download and Extrat frontend
-  unarchive:
-    src: https://github.com/roboshop-devops-project/frontend/archive/main.zip
-    dest: /tmp
-    remote_src: yes
+- name: download and Extract {{COMPONENT}}
+  include_role:
+    name: common
+    tasks_from: download
 
 - name: cleanup old nginx content
   file:
