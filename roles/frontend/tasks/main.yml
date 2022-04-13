@@ -6,3 +6,9 @@
   service:
     name: nginx
     state: started
+
+- name: Download and Extrat frontend
+  unarchive:
+    src: https://github.com/roboshop-devops-project/frontend/archive/main.zip
+    dest: /tmp
+    remote_src: yes
