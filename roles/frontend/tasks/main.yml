@@ -23,3 +23,8 @@
     src: /tmp/frontend-main/static/
     dest: /usr/share/nginx/html
     remote_src: yes
+
+- name: copy roboshop configuration
+  copy:
+    src: roboshop.conf
+    dest: /etc/nginx/default.d/roboshop.conf
