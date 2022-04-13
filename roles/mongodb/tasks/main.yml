@@ -27,11 +27,11 @@
     remote_src: yes
 
 - name: load catalogue schema
-  mongodb_shell:
+  community.mongodb.mongodb_schema:
     file: /tmp/mongodb-main/catalogue.js
     idempotent: yes
 
 - name: load users schema
-  mongodb_shell:
+  community.mongodb.mongodb_schema:
     file: /tmp/mongodb-main/users.js
     idempotent: yes
