@@ -1,4 +1,4 @@
 - name: copy mongodb repo file
   copy:
-    src: F:\REPOS\Ansible\roles\mongodb\files\mongodb.repo
+    src: /home/centos/Ansible/roles/mongodb/files/mongodb.repo
     dest: /etc/yum.repos.d/mongodb.repo
