@@ -13,3 +13,25 @@
     path: /etc/mongod.conf
     regexp: '127.0.0.1'
     replace: '0.0.0.0'
+
+- name: restart mongodb
+  service:
+    name: mongod
+    state: restarted
+    enabled: yes
+
+- name: Download and Extrat mongodb
+  unarchive:
+    src: https://github.com/roboshop-devops-project/mongodb/archive/main.zip
+    dest: /tmp
+    remote_src: yes
+
+- name: load catalogue schema
+  mongodb_shell:
+    file: /tmp/mongodb-main/catalogue.js
+    idempotent: yes
+
+- name: load users schema
+  mongodb_shell:
+    file: /tmp/mongodb-main/users.js
+    idempotent: yes
