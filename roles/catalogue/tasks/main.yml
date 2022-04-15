@@ -18,4 +18,10 @@
     name: common
     tasks_from: download
 
+- name: Add app content
+  ansible.builtin.copy:
+    src: /tmp/catalogue-main/
+    dest: /home/roboshop/catalogue/
+    remote_src: yes
+
 
