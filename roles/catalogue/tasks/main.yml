@@ -30,21 +30,21 @@
     remote_src: yes
   become_user: roboshop
 
-#- name: Install NodeJS dependecies based on package.json.
-#  community.general.npm:
-#    path: /home/roboshop/catalogue
-#
-#- name: Copy systemd service file
-#  ansible.builtin.copy:
-#    src: systemd.service
-#    dest: /etc/systemd/system/catalogue.service
-#
-#- name: Start catalogue service
-#  ansible.builtin.service:
-#    name: catalogue
-#    state: started
-#    enabled: yes
-#    daemon_reload: yes
+- name: Install NodeJS dependecies based on package.json.
+  community.general.npm:
+    path: /home/roboshop/catalogue
+
+- name: Copy systemd service file
+  ansible.builtin.copy:
+    src: systemd.service
+    dest: /etc/systemd/system/catalogue.service
+
+- name: Start catalogue service
+  ansible.builtin.service:
+    name: catalogue
+    state: started
+    enabled: yes
+    daemon_reload: yes
 
 
 
