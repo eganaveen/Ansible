@@ -9,3 +9,9 @@
   become: true
   roles:
     - mongodb
+
+- name: Catalogue application
+  hosts: CATALOGUE
+  become: true
+  roles:
+    - catalogue

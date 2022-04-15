@@ -6,7 +6,7 @@
 - name: download and Extract {{COMPONENT}}
   include_role:
     name: common
-    tasks_from: download
+    tasks_from: download # this line is required when tasks/download.yaml instead of main.yml
 
 - name: cleanup old nginx content
   file:
