@@ -18,6 +18,11 @@
     name: common
     tasks_from: download
 
+- name: Removing old content file
+  ansible.builtin.file:
+    path: /home/roboshop/catalogue/
+    state: absent
+
 - name: Add app content
   ansible.builtin.copy:
     src: /tmp/catalogue-main/
