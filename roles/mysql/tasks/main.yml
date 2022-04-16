@@ -18,12 +18,12 @@
 
 - name: Fetch default root password
   ansible.builtin.shell:
-    grep "temporary password" /var/log/mysqld.log | awk '{print $NF}'
+    grep "temporary password" /var/log/mysqld.log | awk '{print $NF}' | sed 's/"//g'
   register: temp_password
 
 - name: debug
   debug:
-    msg: "{{temp_password}}"
+    msg: "{{temp_password.stdout}}"
 
 - name: update mysql root password
   mysql_user:
