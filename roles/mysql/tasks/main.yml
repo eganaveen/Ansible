@@ -58,6 +58,11 @@
     - name: uninstall plugin
       ansible.builtin.shell: mysql --connect-expired-password -uroot -p"{{DEFAULT_ROOT_PASSWORD.stdout}}" </tmp/plugin_validate.sql
 
+- name: download and Extract {{COMPONENT}}
+  include_role:
+    name: common
+    tasks_from: download
+
 
 
 
