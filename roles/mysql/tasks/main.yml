@@ -22,9 +22,10 @@
   register: temp_password
 
 - name: update mysql root password
-  mysql_user:
+  community.mysql.mysql_info:
     login_user: root
-    login_password: "{{temp_password.stdout}}"
-    name: root
-    password: RoboShop@1
-    priv: "*.*:ALL,GRANT"
+    login_password: RoboShop@1
+  ignore_errors: yes
+  register: mysql_stat
+
+
