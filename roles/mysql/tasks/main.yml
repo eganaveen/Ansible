@@ -41,7 +41,7 @@
         dest: /tmp/changedrootpass.sql
 
     - name: Reset MYSQL password
-      ansible.builtin.shell: mysql --connect-expired-password -uroot -p"{{DEFAULT_ROOT_PASSWORD}}" </tmp/changedrootpass.sql
+      ansible.builtin.shell: mysql --connect-expired-password -uroot -p"{{DEFAULT_ROOT_PASSWORD.stdout}}" </tmp/changedrootpass.sql
 
 
 
