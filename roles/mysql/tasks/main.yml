@@ -37,8 +37,8 @@
 
     - name: copy sql password file
       ansible.builtin.copy:
-      src: custompass.sql
-      dest: /tmp/changeedrootpass.sql
+        src: custompass.sql
+        dest: /tmp/changeedrootpass.sql
 
     - name: Reset MYSQL password
       ansible.builtin.shell: mysql --connect-expired-password -uroot -p"{{DEFAULT_ROOT_PASSWORD}}" < /tmp/changeedrootpass.sql
