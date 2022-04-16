@@ -25,7 +25,27 @@
   community.mysql.mysql_info:
     login_user: root
     login_password: RoboShop@1
-#  ignore_errors: yes
+  ignore_errors: yes
   register: mysql_stat
+
+- name: Reset password block
+  when: mysql_stat.failed
+  block:
+    - name: Grab root password
+      ansible.builtin.shell: grep "temporary password" /var/log/mysqld.log | awk '{print $NF}'
+      register: DEFAULT_ROOT_PASSWORD
+
+    - name: copy sql password file
+      ansible.builtin.copy:
+      src: custompass.sql
+      dest: /tmp/changeedrootpass.sql
+
+    - name: Reset MYSQL password
+      ansible.builtin.shell: mysql --connect-expired-password -uroot -p"{{DEFAULT_ROOT_PASSWORD}}" < /tmp/changeedrootpass.sql
+
+
+
+
+
 
 
