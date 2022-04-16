@@ -21,6 +21,10 @@
     grep "temporary password" /var/log/mysqld.log | awk '{print $NF}'
   register: temp_password
 
+- name: debug
+  debug:
+    - msg: temp_password
+
 - name: update mysql root password
   mysql_user:
     login_user: root
