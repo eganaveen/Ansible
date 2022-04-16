@@ -8,8 +8,21 @@
     name: mysql-community-server
     state: installed
 
-- name: satrrt MySQL
+- name: satrt MySQL
   ansible.builtin.systemd:
     name: mysqld
     state: started
     enabled: yes
+
+- name: Fetch default root password
+  ansible.builtin.shell:
+    grep "temporary password" /var/log/mysqld.log | awk '{print $NF}'
+  register temp_password
+
+- name: update mysql root password
+  mysql_user:
+    login_user=root 
+    login_password={{temp_password}} 
+    name=root 
+    password={{RoboShoop@1}} 
+    priv=*.*:ALL,GRANT
