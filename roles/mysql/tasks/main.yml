@@ -21,8 +21,8 @@
 
 - name: update mysql root password
   mysql_user:
-    login_user=root 
-    login_password={{temp_password}} 
-    name=root 
-    password={{RoboShoop@1}} 
-    priv=*.*:ALL,GRANT
+    login_user: root
+    login_password: {{temp_password}}
+    name: root
+    password: "{{RoboShoop@1}}"
+    priv: "*.*:ALL,GRANT"
