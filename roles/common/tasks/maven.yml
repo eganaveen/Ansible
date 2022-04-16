@@ -3,44 +3,22 @@
     name: maven
     state: installed
 
-- name: Add application user
-  ansible.builtin.user:
-    name: roboshop
-    comment: Roboshop appilcation user
-
 - name: download and Extract {{COMMON_COMPONENT}}
   include_role:
     name: common
     tasks_from: download
-
-- name: Removing old content file
-  ansible.builtin.file:
-    path: /home/roboshop/{{COMMON_COMPONENT}}/
-    state: absent
-
-- name: Add app content
-  ansible.builtin.copy:
-    src: /tmp/{{COMMON_COMPONENT}}-main/
-    dest: /home/roboshop/{{COMMON_COMPONENT}}/
-    remote_src: yes
-  become_user: roboshop
 
 - name: make maven package
   ansible.builtin.shell: mvn clean package && mv target/shipping-1.0.jar shipping.jar
   args:
     chdir: /home/roboshop/{{COMMON_COMPONENT}}/
 
-- name: Copy systemd service file
-  ansible.builtin.copy:
-    src: systemd.service
-    dest: /etc/systemd/system/{{COMMON_COMPONENT}}.service
+- name: setup systemd
+  include_role:
+    name: common
+    tasks_from: systemd
 
-- name: Start {{COMMON_COMPONENT}} service
-  ansible.builtin.service:
-    name: "{{COMMON_COMPONENT}}"
-    state: started
-    enabled: yes
-    daemon_reload: yes
+
 
 
 
