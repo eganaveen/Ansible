@@ -1,0 +1,26 @@
+- name: Install Python
+  ansible.builtin.yum:
+    name:
+      - python36
+      - gcc
+      - python3-devel
+    state: installed
+
+- name: Setup App user, download and Extract {{COMMON_COMPONENT}}
+  include_role:
+    name: common
+    tasks_from: download
+
+- name: Install specified python requirements
+  pip:
+    requirements: /home/roboshop/{{COMMON_COMPONENT}}/requirements.txt
+    executable: pip3
+
+- name: setup systemd
+  include_role:
+    name: common
+    tasks_from: systemd
+
+
+
+
