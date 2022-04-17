@@ -3,14 +3,14 @@
     curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | sudo bash
 
 - name: Install ERlang and RabbitMQ
-  ansibel.builtin.yum:
+  ansible.builtin.yum:
     name:
       - https://github.com/rabbitmq/erlang-rpm/releases/download/v23.2.6/erlang-23.2.6-1.el7.x86_64.rpm
       - rabbitmq-server
     state: installed
 
 - name: Start RabbitMQ server
-  ansibel.builtin.systemd:
+  ansible.builtin.systemd:
     name: rabbitmq-server
     state: started
     enabled: yes
