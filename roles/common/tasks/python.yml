@@ -18,7 +18,7 @@
 
 - name: print
   debug:
-    msg: "{{APP_USER_REGISTER.group}}"
+    msg: "{{APP_USER_REGISTER}}"
 
 - name: Update UserID in APP configuration
   ansible.builtin.lineinfile:
