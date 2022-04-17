@@ -16,10 +16,6 @@
     requirements: /home/roboshop/{{COMMON_COMPONENT}}/requirements.txt
     executable: pip3
 
-- name: print
-  debug:
-    msg: "{{APP_USER_REGISTER}}"
-
 - name: Update UserID in APP configuration
   ansible.builtin.lineinfile:
     path: /home/roboshop/{{COMMON_COMPONENT}}/{{COMMON_COMPONENT}}.ini
