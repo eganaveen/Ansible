@@ -21,3 +21,6 @@ cart.roboshop.internal
 
 [SHIPPING]
 shipping.roboshop.internal
+
+[RABBITMQ]
+rabbitmaq.roboshop.internal
