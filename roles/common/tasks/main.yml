@@ -1,2 +1,2 @@
 - name: Setup Hostname
-  shell: set-hostname {{COMMON-COMPONENT}}
+  shell: set-hostname {{COMMON_COMPONENT}}
