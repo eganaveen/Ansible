@@ -3,7 +3,7 @@ pipeline{
     stages{
         stage('Do a Dry Run'){
             steps{
-                sh 'ansible-playbook roboshop.yml -e HOST=localhost -e role_name=frontend --ask-become-pass -C'
+                sh 'ansible-playbook roboshop.yml -e HOST=localhost -e role_name=frontend -C'
             }
         }
     }
