@@ -13,11 +13,11 @@
     path: /usr/share/nginx/html
     state: absent
 
-- name: copy the frontend content to nginx path
-  copy:
-    src: /tmp/frontend-main/static/
-    dest: /usr/share/nginx/html
-    remote_src: yes
+#- name: copy the frontend content to nginx path
+#  copy:
+#    src: /tmp/frontend-main/static/
+#    dest: /usr/share/nginx/html
+#    remote_src: yes
 
 - name: copy roboshop configuration
   ansible.builtin.copy:
