@@ -13,7 +13,7 @@
   ansible.builtin.file:
     path: "{{APP_LOCATION}}"
     state: directory
-  become_user: "{ { APP_USER } }"
+  become_user: roboshop
 
 
 ########## Download rom GitHub #################
