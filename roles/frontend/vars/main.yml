@@ -1,2 +1,3 @@
 COMMON_COMPONENT: frontend
-APP_LOCATION: /home/roboshop/{{COMMON_COMPONENT}}
+APP_LOCATION: /usr/share/nginx/html
+APP_USER: root
