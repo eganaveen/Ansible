@@ -16,7 +16,7 @@
 - name: Download and Extract from NEXUS repository {{COMMON_COMPONENT}}
   unarchive:
     src: http://172.31.1.142:8081/repository/{{COMMON_COMPONENT}}/{{COMMON_COMPONENT}}-1.0.0.zip
-    dest: /tmp
+    dest: /tmp/frontend-demo
     remote_src: yes
 
 - name: Removing old content file
