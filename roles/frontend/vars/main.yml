@@ -1,1 +1,2 @@
 COMMON_COMPONENT: frontend
+APP_LOCATION: /home/roboshop/{{COMMON_COMPONENT}}
