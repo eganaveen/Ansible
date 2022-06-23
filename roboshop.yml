@@ -1,21 +1,3 @@
-#- name: frontend application
-#  hosts: FRONTEND
-#  become: true
-#  roles:
-#    - frontend
-#
-#- name: Mongodb application
-#  hosts: MONGODB
-#  become: true
-#  roles:
-#    - mongodb
-#
-#- name: Catalogue application
-#  hosts: CATALOGUE
-#  become: true
-#  roles:
-#    - catalogue
-
 - name: Roboshop Setup
   hosts: "{{HOST}}"
   become: yes

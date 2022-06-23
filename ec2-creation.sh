@@ -8,7 +8,6 @@ INSTANE_CREATE(){
   COMPONENT=$1
   AMI_ID=$(aws ec2 describe-images --filters "Name=name,Values=Centos-7-DevOps-Practice" | jq '.Images[].ImageId' | sed -e 's/"//g')
 
-
   PRIVATE_IP=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=${COMPONENT}" --query 'Reservations[*].Instances[*].PrivateIpAddress' --output text)
 
   if [ -z "${PRIVATE_IP}" ]; then
@@ -26,7 +25,7 @@ INSTANE_CREATE(){
 
       # Creating DNS records
       ZONE_ID=$(aws route53 list-hosted-zones --query "HostedZones[*].{name:Name,ID:Id}" \
-                                              --output text | grep roboshop.internal \
+                                              --output text | grep egaroboshop.online. | grep -i true \
                                               | awk '{print $1}' | awk -F / '{print $3}')
       sed -e "s/IPADDRESS/${PRIVATE_IP}/" -e "s/COMPONENT/${COMPONENT}/" roboshop.json >/tmp/record.json
       aws route53 change-resource-record-sets --hosted-zone-id "${ZONE_ID}" --change-batch file:///tmp/record.json | jq &>/dev/null

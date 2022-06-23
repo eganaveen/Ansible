@@ -4,9 +4,18 @@
     comment: Roboshop appilcation user
   register: APP_USER_REGISTER
 
-- name: Download and Extract {{COMMON_COMPONENT}}
+
+########## Download rom GitHub #################
+#- name: Download and Extract {{COMMON_COMPONENT}}
+#  unarchive:
+#    src: https://github.com/roboshop-devops-project/{{COMMON_COMPONENT}}/archive/main.zip
+#    dest: /tmp
+#    remote_src: yes
+#################################################
+
+- name: Download and Extract from NEXUS repository {{COMMON_COMPONENT}}
   unarchive:
-    src: https://github.com/roboshop-devops-project/{{COMMON_COMPONENT}}/archive/main.zip
+    src: http://44.195.41.117:8081/repository/cart/cart-1.0.2.zip
     dest: /tmp
     remote_src: yes
 

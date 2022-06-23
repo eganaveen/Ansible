@@ -1,5 +1,0 @@
-- name: role playbook
-  hosts: all
-  become: yes
-  roles:
-    - demo
