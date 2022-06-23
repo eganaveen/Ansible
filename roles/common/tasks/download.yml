@@ -4,10 +4,16 @@
     comment: Roboshop appilcation user
   register: APP_USER_REGISTER
 
-- name: Removing old content file
+- name: CleanUp old content file
   ansible.builtin.file:
     path: "{{APP_LOCATION}}"
     state: absent
+
+- name: Create App Location
+  ansible.builtin.file:
+    path: "{{APP_LOCATION}}"
+    state: directory
+
 ########## Download rom GitHub #################
 #- name: Download and Extract {{COMMON_COMPONENT}}
 #  unarchive:
