@@ -24,7 +24,7 @@ INSTANE_CREATE(){
       echo -e " \e[31m${COMPONENT}\e[0m \e[32mInstance Created\e[0m"
 
       # Creating DNS records
-      ZONE_ID=$(aws route53 list-hosted-zones --query "HostedZones[*].{name:Name,ID:Id}" \
+      ZONE_ID=$(aws route53 list-hosted-zones --query "HostedZones[*].{name:Name,ID:Id,PrivateZone:Config.PrivateZone}" \
                                               --output text | grep egaroboshop.online. | grep -i true \
                                               | awk '{print $1}' | awk -F / '{print $3}')
       sed -e "s/IPADDRESS/${PRIVATE_IP}/" -e "s/COMPONENT/${COMPONENT}/" roboshop.json >/tmp/record.json
