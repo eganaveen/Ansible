@@ -15,7 +15,7 @@
 
 - name: Download and Extract from NEXUS repository {{COMMON_COMPONENT}}
   unarchive:
-    src: http://52.3.230.224:8081/repository/{{COMMON_COMPONENT}}/{{COMMON_COMPONENT}}-1.0.0.zip
+    src: http://172.31.1.142:8081/repository/{{COMMON_COMPONENT}}/{{COMMON_COMPONENT}}-1.0.0.zip
     dest: /tmp
     remote_src: yes
 
