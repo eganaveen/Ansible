@@ -6,8 +6,8 @@ INSTANE_CREATE(){
       exit 1
   fi
   COMPONENT=$1
-  AMI_ID=$(aws ec2 describe-images --filters "Name=name,Values=Centos-7-DevOps-Practice" | jq '.Images[].ImageId' | sed -e 's/"//g')
-
+#  AMI_ID=$(aws ec2 describe-images --filters "Name=name,Values=Centos-7-DevOps-Practice" | jq '.Images[].ImageId' | sed -e 's/"//g')
+  AMI_ID="ami-0005e19f20686f0b2"
   PRIVATE_IP=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=${COMPONENT}" --query 'Reservations[*].Instances[*].PrivateIpAddress' --output text)
 
   if [ -z "${PRIVATE_IP}" ]; then
