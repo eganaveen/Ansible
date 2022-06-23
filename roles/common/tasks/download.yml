@@ -29,7 +29,7 @@
     src: http://nexus.egaroboshop.online:8081/repository/{{COMMON_COMPONENT}}/{{COMMON_COMPONENT}}-1.0.0.zip
     dest: "{{APP_LOCATION}}"
     remote_src: yes
-  become_user: roboshop
+  become_user: "{{APP_USER}}"
 #
 #- name: Add app content
 #  ansible.builtin.copy:
