@@ -6,7 +6,7 @@
 
 - name: Removing old content file
   ansible.builtin.file:
-    path: {{APP_LOCATION}}
+    path: "{{APP_LOCATION}}"
     state: absent
 ########## Download rom GitHub #################
 #- name: Download and Extract {{COMMON_COMPONENT}}
@@ -19,7 +19,7 @@
 - name: Download and Extract from NEXUS repository {{COMMON_COMPONENT}}
   unarchive:
     src: http://nexus.egaroboshop.online:8081/repository/{{COMMON_COMPONENT}}/{{COMMON_COMPONENT}}-1.0.0.zip
-    dest: {{APP_LOCATION}}
+    dest: "{{APP_LOCATION}}"
     remote_src: yes
   become_user: roboshop
 #
