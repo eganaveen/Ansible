@@ -12,6 +12,8 @@
   include_role:
     name: common
     tasks_from: download
+  vars:
+    APP_LOCATION: "/home/roboshop/{{COMMON_COMPONENT}}"
 
 - name: Install NodeJS dependecies based on package.json
   community.general.npm:

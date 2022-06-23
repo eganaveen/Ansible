@@ -4,7 +4,10 @@
     comment: Roboshop appilcation user
   register: APP_USER_REGISTER
 
-
+- name: Removing old content file
+  ansible.builtin.file:
+    path: { { APP_LOCATION } }
+    state: absent
 ########## Download rom GitHub #################
 #- name: Download and Extract {{COMMON_COMPONENT}}
 #  unarchive:
@@ -15,21 +18,17 @@
 
 - name: Download and Extract from NEXUS repository {{COMMON_COMPONENT}}
   unarchive:
-    src: http://172.31.1.142:8081/repository/{{COMMON_COMPONENT}}/{{COMMON_COMPONENT}}-1.0.0.zip
-    dest: /tmp/frontend-demo
-    remote_src: yes
-
-- name: Removing old content file
-  ansible.builtin.file:
-    path: /home/roboshop/{{COMMON_COMPONENT}}/
-    state: absent
-
-- name: Add app content
-  ansible.builtin.copy:
-    src: /tmp/{{COMMON_COMPONENT}}-main/
-    dest: /home/roboshop/{{COMMON_COMPONENT}}/
+    src: http://nexus.egaroboshop.online:8081/repository/{{COMMON_COMPONENT}}/{{COMMON_COMPONENT}}-1.0.0.zip
+    dest: { { APP_LOCATION } }
     remote_src: yes
   become_user: roboshop
+#
+#- name: Add app content
+#  ansible.builtin.copy:
+#    src: /tmp/{{COMMON_COMPONENT}}-main/
+#    dest: /home/roboshop/{{COMMON_COMPONENT}}/
+#    remote_src: yes
+#  become_user: roboshop
 
 
 
